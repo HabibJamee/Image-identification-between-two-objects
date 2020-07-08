@@ -6,11 +6,11 @@ from tqdm import tqdm
 
 DATADIR = "Data"
 
-CATEGORIES = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "12", "14", "15"]
+CATEGORIES = []#file name
 
-for category in CATEGORIES:  # do dogs and cats
-    path = os.path.join(DATADIR,category)  # create path to dogs and cats
-    for img in os.listdir(path):  # iterate over each image per dogs and cats
+for category in CATEGORIES:  
+    path = os.path.join(DATADIR,category)  
+    for img in os.listdir(path):  
         img_array = cv2.imread(os.path.join(path,img) ,cv2.IMREAD_GRAYSCALE)  # convert to array
         plt.imshow(img_array, cmap='gray')  # graph it
         plt.show()  # display!
@@ -34,8 +34,8 @@ training_data = []
 def create_training_data():
     for category in CATEGORIES:  # do dogs and cats
 
-        path = os.path.join(DATADIR,category)  # create path to dogs and cats
-        class_num = CATEGORIES.index(category)  # get the classification  (0 or a 1). 0=dog 1=cat
+        path = os.path.join(DATADIR,category)  # create path 
+        class_num = CATEGORIES.index(category)  # get the classification  
 
         for img in tqdm(os.listdir(path)):  # iterate over each image per dogs and cats
             try:
